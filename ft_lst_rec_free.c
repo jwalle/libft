@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lst_rec_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwalle <jwalle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/19 18:39:59 by jwalle            #+#    #+#             */
-/*   Updated: 2015/06/05 18:57:34 by jwalle           ###   ########.fr       */
+/*   Created: 2015/06/05 18:33:50 by jwalle            #+#    #+#             */
+/*   Updated: 2015/06/05 18:51:43 by jwalle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+void	ft_lst_rec_free(t_list *first)
 {
-	t_list *current;
-
-	current = lst;
-	while (current)
+	if (first)
 	{
-		f(current);
-		current = current->next;
+		ft_lst_rec_free(first->next);
+		free(first);
 	}
 }

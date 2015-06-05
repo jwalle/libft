@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lst_foreach.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwalle <jwalle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/19 18:39:59 by jwalle            #+#    #+#             */
-/*   Updated: 2015/06/05 18:57:34 by jwalle           ###   ########.fr       */
+/*   Created: 2015/06/05 18:27:10 by jwalle            #+#    #+#             */
+/*   Updated: 2015/06/05 18:50:59 by jwalle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+void	ft_lst_foreach(t_list *lst, void (*f)())
 {
-	t_list *current;
+	t_list		*tmp;
 
-	current = lst;
-	while (current)
+	tmp = lst;
+	while (tmp)
 	{
-		f(current);
-		current = current->next;
+		f(tmp->data);
+		tmp = tmp->next;
 	}
 }

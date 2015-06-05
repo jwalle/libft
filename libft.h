@@ -6,7 +6,7 @@
 /*   By: jwalle <jwalle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 12:38:35 by jwalle            #+#    #+#             */
-/*   Updated: 2015/05/20 19:16:12 by jwalle           ###   ########.fr       */
+/*   Updated: 2015/06/05 18:58:03 by jwalle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 typedef struct		s_list
 {
+	void			*data;
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
@@ -84,5 +85,8 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+void				ft_lst_foreach(t_list *lst, void (*f)());
+t_list				*ft_lst_push(t_list *first, void *item);
+void				ft_lst_rec_free(t_list *first);
 
 #endif

@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lst_push.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwalle <jwalle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/19 18:39:59 by jwalle            #+#    #+#             */
-/*   Updated: 2015/06/05 18:57:34 by jwalle           ###   ########.fr       */
+/*   Created: 2015/06/05 18:29:22 by jwalle            #+#    #+#             */
+/*   Updated: 2015/06/05 18:51:27 by jwalle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+t_list		*ft_lst_push(t_list *first, void *item)
 {
-	t_list *current;
+	t_list	*tmp;
 
-	current = lst;
-	while (current)
+	if (!item)
+		return (NULL);
+	if (!first)
 	{
-		f(current);
-		current = current->next;
+		first = malloc(sizeof(t_list));
+		first->data = item;
+		first->next = NULL;
 	}
+	else
+	{
+		tmp = first;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = malloc(sizeof(t_list));
+		tmp->next->data = item;
+		tmp->next->next = NULL;
+	}
+	return (first);
 }
